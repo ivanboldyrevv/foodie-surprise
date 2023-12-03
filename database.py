@@ -7,7 +7,7 @@ class Database:
         self.recipes_dict = {}
 
     def send_recipe_to_db(self, name, url, category):
-        self.db.execute('INSERT INTO recipes (name, url, category) VALUES (?, ?, ?)', (name, url, category))
+        self.db.execute('INSERT OR IGNORE INTO recipes (name, url, category) VALUES (?, ?, ?)', (name, url, category))
         self.db.commit()
 
     def get_recipes_from_db_to_dict(self):
